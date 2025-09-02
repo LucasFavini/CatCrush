@@ -335,7 +335,7 @@
             if (areAdjacent(r1, c1, r2, c2)) {
                 animateSwap(selectedTile, targetTile).then(() => {
                     doSwap({ r: r1, c: c1 }, { r: r2, c: c2 });
-                    // moves--;
+                    moves--;
                     movesEl.textContent = moves;
                 });
             }
@@ -536,7 +536,7 @@
                 moves = levelData[level].moves;
             } else {
                 targetScore += 200;
-                moves += 5;
+                moves += 10;
             }
             resetGame();
         }
