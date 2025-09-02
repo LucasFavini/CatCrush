@@ -170,25 +170,26 @@
 </head>
 <body>
     <div class="wrap">
-        <div id="board" class="panel" aria-label="Tablero"></div>
         <aside class="panel hud">
-            <h1>🐾 Cat Match – Prototipo</h1>
-            <div class="stat"><span>Nivel</span><strong id="level">1</strong></div>
-            <div class="stat"><span>Objetivo</span><strong id="target-score">100</strong></div>
-            <div class="stat"><span>Puntaje</span><strong id="score">0</strong></div>
-            <div class="bar"><span id="scoreBar"></span></div>
-            <div class="stat"><span>Movimientos</span><strong id="moves">20</strong></div>
             <div class="row">
-                <button id="reset" class="btn">Reiniciar</button>
+                <span>📈</span><strong id="level">1</strong>
+                <span>🏆</span><strong id="target-score">100</strong>
+                <span>🎯</span><strong id="score">0</strong>
+                <span>🔀</span><strong id="moves">20</strong>
             </div>
+            <div class="bar"><span id="scoreBar"></span></div>
+            <!-- <div class="row">
+                <button id="reset" class="btn">⟳</button>
+            </div> -->
             <small>Consejo: arrastra un gatito para intercambiarlo con uno adyacente.</small>
         </aside>
+        <div id="board" class="panel" aria-label="Tablero"></div>
     </div>
 
     <div id="game-message" class="game-message">
         <h2 id="message-text"></h2>
-        <button id="next-level-btn" class="btn" style="display:none;">Siguiente Nivel</button>
-        <button id="try-again-btn" class="btn" style="display:none;">Intentar de Nuevo</button>
+        <button id="next-level-btn" class="btn" style="display:none;">≫</button>
+        <button id="try-again-btn" class="btn" style="display:none;">⟳</button>
     </div>
 
     <script>
@@ -566,7 +567,7 @@
 
         nextLevelBtn.addEventListener('click', nextLevel);
         tryAgainBtn.addEventListener('click', reset);
-        resetBtn.addEventListener('click', reset);
+        // resetBtn.addEventListener('click', reset);
 
         reset();
     </script>
