@@ -272,9 +272,27 @@
                         img.src = `assets/${TYPES[val]}`;
                         tile.appendChild(img);
                     }
-
                     tile.addEventListener('pointerdown', onPointerDown);
                     tile.addEventListener('pointerenter', onPointerEnter);
+
+                    // Touch support for mobile drag
+                    tile.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        onPointerDown({ currentTarget: tile, preventDefault: () => {} });
+                    }, { passive: false });
+
+                    tile.addEventListener('touchmove', function(e) {
+                        if (!selectedTile) return;
+                        const touch = e.touches[0];
+                        const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+                        if (elem && elem.classList.contains('tile') && elem !== selectedTile) {
+                            onPointerEnter({ currentTarget: elem });
+                        }
+                    }, { passive: false });
+
+                    tile.addEventListener('touchend', function(e) {
+                        onPointerUp();
+                    }, { passive: false });
                     
                     boardEl.appendChild(tile);
                 }
@@ -316,7 +334,7 @@
             if (areAdjacent(r1, c1, r2, c2)) {
                 animateSwap(selectedTile, targetTile).then(() => {
                     doSwap({ r: r1, c: c1 }, { r: r2, c: c2 });
-                    moves--;
+                    // moves--;
                     movesEl.textContent = moves;
                 });
             }
