@@ -139,6 +139,32 @@
         /* Estilos para el panel en pantallas móviles */
         padding: 12px;
     }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        body {
+            padding: 0; /* Elimina los espacios a los lados */
+        }
+        .wrap {
+            width: 100%; /* El contenedor ocupa todo el ancho */
+            max-width: 100%; /* Sobrescribe la propiedad original */
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px; /* Añade padding para no pegar al borde */
+        }
+        .panel {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #board {
+            --tile: 11vmin
+        }
+        .hud {
+            justify-content: center;
+            text-align: center;
+        }
+        .hud .row {
+            justify-content: center;
+        }
+    }
 }
 </style>
 </head>
